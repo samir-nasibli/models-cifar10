@@ -11,6 +11,7 @@ pool:
 
 steps:
 - script: |
-    pip install -r requirements.txt
+    pip install -U -r requirements/default.txt
+    pip install -U -r requirements/test.txt
     pytest tests/
   displayName: 'Installing requirements and running tests'
