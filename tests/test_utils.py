@@ -1,10 +1,10 @@
 import pytest
 
-from utils.common_utils import merge_two_dicts
+from utils import common_utils
 
 
-def test_merge_two_dicts_return_type():
+def test_merge_two_dicts():
     a = {}
     b = {}
-    c = merge_two_dicts(a,b)
+    c =  common_utils.merge_two_dicts(a,b)
     assert type(c) == dict
