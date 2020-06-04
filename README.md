@@ -85,3 +85,7 @@ Example of running:
 ```bash
 python main.py  --arch=resnet20 --epochs=100  --save-dir=save_resnet20
 ```
+For evaluation:
+```bash
+python main.py --evaluate --arch=resnet20  --save-dir=save_resnet20
+```
