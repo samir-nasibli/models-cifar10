@@ -6,7 +6,7 @@
 trigger:
 - master
 jobs:
-- job: 'cifar10-models'
+- job: 'models_cifar10'
   pool:
     vmImage: 'Ubuntu-16.04'
   strategy:
