@@ -1,7 +1,9 @@
 # prototype-cifar10
 prototype for cifar10 pet project
 
-# Prequerities
+## Prerequisites
+* Python3.5+
+* CUDA 10.1
 
 ## Installation from source
 
