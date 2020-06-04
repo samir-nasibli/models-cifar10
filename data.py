@@ -4,7 +4,7 @@ import torchvision.datasets as datasets
 import torchvision.transforms as transforms
 
 
-def train_loader(num_workers, batch_size):
+def train_loader(num_workers, batch_size, normalize):
     loader = torch.utils.data.DataLoader(
         datasets.CIFAR10(root='./data', train=True, transform=transforms.Compose([
             transforms.RandomHorizontalFlip(),
@@ -17,7 +17,7 @@ def train_loader(num_workers, batch_size):
     return loader
 
 
-def validate_loader(num_workers, batch_size):
+def validate_loader(num_workers, batch_size, normalize):
     loader = torch.utils.data.DataLoader(
         datasets.CIFAR10(root='./data', train=False, transform=transforms.Compose([
             transforms.ToTensor(),
