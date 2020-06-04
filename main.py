@@ -13,7 +13,7 @@ import torchvision.transforms as transforms
 import torchvision.datasets as datasets
 from models import vgg
 from models import resnet
-from utils.common_utils import merge_two_dicts
+from utils.common_utils import merge_two_dicts, save_checkpoint
 
 
 models_dict = merge_two_dicts(vgg.__dict__, resnet.__dict__)
@@ -256,11 +256,6 @@ def validate(val_loader, model, criterion):
 
     return top1.avg
 
-def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
-    """
-    Save the training model
-    """
-    torch.save(state, filename)
 
 class AverageMeter(object):
     """Computes and stores the average and current value"""
