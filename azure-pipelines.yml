@@ -7,11 +7,14 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'ubuntu-16.04'
 
 steps:
-- script: |
-    pip install -U -r requirements/default.txt
-    pip install -U -r requirements/test.txt
-    pytest tests/
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.6'
+    script: |
+      pip install -U -r requirements/default.txt
+      pip install -U -r requirements/test.txt
+      pytest tests/
   displayName: 'Installing requirements and running tests'
