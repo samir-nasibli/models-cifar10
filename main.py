@@ -13,11 +13,8 @@ import torchvision.transforms as transforms
 import torchvision.datasets as datasets
 from models import vgg
 from models import resnet
+from utils.common_utils import merge_two_dicts
 
-def merge_two_dicts(x, y):
-    z = x.copy()   # start with x's keys and values
-    z.update(y)    # modifies z with y's keys and values & returns None
-    return z
 
 models_dict = merge_two_dicts(vgg.__dict__, resnet.__dict__)
 model_names = sorted(name for name in models_dict
