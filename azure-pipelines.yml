@@ -5,16 +5,25 @@
 
 trigger:
 - master
-
-pool:
-  vmImage: 'ubuntu-16.04'
-
-steps:
-- task: UsePythonVersion@0
-  inputs:
-    versionSpec: '3.6'
-    script: |
+jobs:
+- job: 'cifar10-models'
+  pool:
+    vmImage: 'Ubuntu-16.04'
+  strategy:
+    matrix:
+      Python36:
+        python.version: '3.6'
+      Python37:
+        python.version: '3.7'
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '$(python.version)'
+  - script: |
+      python -m pip install --upgrade pip
       pip install -U -r requirements/default.txt
       pip install -U -r requirements/test.txt
+    displayName: 'Install dependencies'
+  - script: |
       pytest tests/
-  displayName: 'Installing requirements and running tests'
+    displayName: 'Run tests'
