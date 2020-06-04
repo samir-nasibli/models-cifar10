@@ -2,7 +2,7 @@
 The purpose of this repo is to provide a valid pytorch implementation of ResNet-s and VGG-s for CIFAR10 and do comparative analysis.
 
 The following models are provided (with validation results):
-| Name      | # layers | # params| Test err(paper) | Test err(this impl.)|
+| Name      | # layers | # params| Test err(this impl.) | Test err(papers)|
 |-----------|---------:|--------:|:-----------------:|:---------------------:|
 |[ResNet20]()   |    20    | 0.27M   |TODO| -|
 |[ResNet32]()  |    32    | 0.46M   | TODO| -|
@@ -42,4 +42,9 @@ Install dependencies using:
 
 ```
 pip install -r requirements.txt
+```
+
+## How to run?
+```bash
+
 ```
