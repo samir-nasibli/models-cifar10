@@ -25,5 +25,5 @@ jobs:
       pip install -U -r requirements/test.txt
     displayName: 'Install dependencies'
   - script: |
-      pytest tests/
+      pytest -vv tests/
     displayName: 'Run tests'
