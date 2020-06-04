@@ -8,6 +8,8 @@
   Documentation requirements
 - [test.txt](test.txt)
   Requirements for running test suite
+- [optional.txt](optional.txt)
+  Optional requirements. For getting saved models.
 
 ## Examples
 
