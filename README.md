@@ -45,6 +45,43 @@ pip install -r requirements.txt
 ```
 
 ## How to run?
+See the usage of runner:
 ```bash
+python main.py -h
+```
+```
+usage: main.py [-h] [--arch ARCH] [-j N] [--epochs N] [--start-epoch N] [-b N]
+               [--lr LR] [--momentum M] [--weight-decay W] [--print-freq N]
+               [--resume PATH] [-e] [--pretrained] [--half] [--cpu]
+               [--save-dir SAVE_DIR]
 
+PyTorch ImageNet Training
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --arch ARCH, -a ARCH  model architecture: resnet110 | resnet1202 | resnet20
+                        | resnet32 | resnet44 | resnet56 | vgg11 | vgg11_bn |
+                        vgg13 | vgg13_bn | vgg16 | vgg16_bn | vgg19 | vgg19_bn
+                        (default: vgg19)
+  -j N, --workers N     number of data loading workers (default: 4)
+  --epochs N            number of total epochs to run
+  --start-epoch N       manual epoch number (useful on restarts)
+  -b N, --batch-size N  mini-batch size (default: 128)
+  --lr LR, --learning-rate LR
+                        initial learning rate
+  --momentum M          momentum
+  --weight-decay W, --wd W
+                        weight decay (default: 5e-4)
+  --print-freq N, -p N  print frequency (default: 20)
+  --resume PATH         path to latest checkpoint (default: none)
+  -e, --evaluate        evaluate model on validation set
+  --pretrained          use pre-trained model
+  --half                use half-precision(16-bit)
+  --cpu                 use cpu
+  --save-dir SAVE_DIR   The directory used to save the trained models
+```
+
+Example of running:
+```bash
+python main.py  --arch=resnet20 --epochs=100  --save-dir=save_resnet20
 ```
