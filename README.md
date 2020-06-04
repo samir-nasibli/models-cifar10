@@ -1,5 +1,6 @@
 # ResNet and VGG implementation for CIFAR10/CIFAR100 in Pytorch
 The purpose of this repo is to provide a valid pytorch implementation of ResNet-s and VGG-s for CIFAR10 and do comparative analysis.
+<<<<<<< HEAD
 
 The following models are provided (with validation results):
 | Name      | # layers | # params| Test err(this impl.) | Test err(papers)|
@@ -89,3 +90,5 @@ For evaluation:
 ```bash
 python main.py --evaluate --arch=resnet20  --save-dir=save_resnet20
 ```
+=======
+>>>>>>> master
