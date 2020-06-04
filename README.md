@@ -80,6 +80,8 @@ optional arguments:
   --half                use half-precision(16-bit)
   --cpu                 use cpu
   --save-dir SAVE_DIR   The directory used to save the trained models
+  --save-every SAVE_EVERY
+                        Saves checkpoints at every specified number of epochs
 ```
 
 Example of running:
@@ -90,5 +92,3 @@ For evaluation:
 ```bash
 python main.py --evaluate --arch=resnet20  --save-dir=save_resnet20
 ```
-=======
->>>>>>> master
