@@ -58,6 +58,9 @@ parser.add_argument('--cpu', dest='cpu', action='store_true',
 parser.add_argument('--save-dir', dest='save_dir',
                     help='The directory used to save the trained models',
                     default='save_temp', type=str)
+parser.add_argument('--save-every', dest='save_every',
+                    help='Saves checkpoints at every specified number of epochs',
+                    type=int, default=10)
 
 
 def main():
@@ -129,11 +132,18 @@ def main():
         # remember best prec@1 and save checkpoint
         is_best = prec1 > best_prec1
         best_prec1 = max(prec1, best_prec1)
+
+        if epoch > 0 and epoch % args.save_every == 0:
+            save_checkpoint({
+                'epoch': epoch + 1,
+                'state_dict': model.state_dict(),
+                'best_prec1': best_prec1,
+            }, is_best, filename=os.path.join(args.save_dir, 'checkpoint_{}.tar'.format(epoch)))
+
         save_checkpoint({
-            'epoch': epoch + 1,
             'state_dict': model.state_dict(),
             'best_prec1': best_prec1,
-        }, is_best, filename=os.path.join(args.save_dir, 'checkpoint_{}.tar'.format(epoch)))
+        }, is_best, filename=os.path.join(args.save_dir, 'model.th'))
 
 
 if __name__ == '__main__':
