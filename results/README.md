@@ -1,4 +1,11 @@
 ## Experiment results
+Some machine and env info:
+```bash
+Torch 1.5.0+cu101
+Current device 0
+Devices count: 1
+Device: Tesla P100-PCIE-16GB
+```
 
 ## TODO
 * Update Table
