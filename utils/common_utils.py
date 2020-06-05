@@ -14,12 +14,11 @@ def print_cuda_device_info():
     Prints some initial cuda device info
     """
     if torch.cuda.is_available():
-        print(torch.__version__)
-        print(torch.cuda.current_device())
+        print(f'Torch {torch.__version__}')
+        print(f'Current device {torch.cuda.current_device()}')
         print(torch.cuda.device(0))
-        print(torch.cuda.device_count())
-        print(torch.cuda.get_device_name(0))
-        print(torch.cuda.current_device())
+        print(f'Devices count: {torch.cuda.device_count()}')
+        print(f'Device: {torch.cuda.get_device_name(0)}')
     else:
         print("CUDA is unavailable")
 
