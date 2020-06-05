@@ -6,14 +6,14 @@ Current device 0
 Devices count: 1
 Device: Tesla P100-PCIE-16GB
 ```
-The provided table show comparative analysys of ResNet20 on Cifar10 between this impl. and original [paper](https://arxiv.org/abs/1512.03385)
+The provided table show comparative analysys of between ResNet and VGG models on Cifar10.
 
 
-| Name      | # layers | # params| Test err(this impl.) | Test err(papers)|
-|-----------|---------:|--------:|:-----------------:|:---------------------:|
-|[ResNet20](https://drive.google.com/file/d/11ASser28ZsYDNJPQzTHqEm5IL-mAaoJh/view?usp=sharing)   |    20    | 0.27M   |8.91%| 8.27%|
-|[VGG11]()   |    -    | -   |TODO| -|
-|[VGG16]()  |   -    |  -   | TODO| -|
+| Name      | # layers | # params| Prec@1 |
+|-----------|---------:|--------:|:-----------------:|
+|[ResNet20](https://drive.google.com/file/d/11ASser28ZsYDNJPQzTHqEm5IL-mAaoJh/view?usp=sharing)   |    20    | 0.27M   |91.990%|
+|[VGG11](https://drive.google.com/file/d/11niPBS9H8gmvF5JmR4l_ZGrPXz9Nr7s3/view?usp=sharing)   |    11    | 133M   |86.810%|
+|[VGG16]()  |   16   |  138   | TODO|
 
 ## TODO
 * Update Table
