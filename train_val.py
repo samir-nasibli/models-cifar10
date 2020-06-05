@@ -96,7 +96,7 @@ def validate(val_loader, model, criterion, args_cpu, args_half, print_freq):
     return top1.avg
 
 
-def train(train_loader, model, criterion, optimizer, epoch, args_cpu, args_half, print_freq):
+def train(train_loader, model, criterion, optimizer, epoch, args_cpu, args_half, print_freq, writer = None):
     """
         Run one train epoch
     """
@@ -148,3 +148,6 @@ def train(train_loader, model, criterion, optimizer, epoch, args_cpu, args_half,
                   'Prec@1 {top1.val:.3f} ({top1.avg:.3f})'.format(
                       epoch, i, len(train_loader), batch_time=batch_time,
                       data_time=data_time, loss=losses, top1=top1))
+            if writer is not None:
+                writer.add_scalar('training/loss', losses.avg, epoch * len(train_loader) + i)
+                writer.add_scalar('training/Prec@1', top1.avg, epoch * len(train_loader) + i)

@@ -11,6 +11,8 @@ import torch.optim
 
 import torchvision.transforms as transforms
 
+from torch.utils.tensorboard import SummaryWriter
+
 from data import train_loader, validate_loader
 from train_val import validate, train, adjust_learning_rate
 from models import vgg, resnet
@@ -61,6 +63,11 @@ parser.add_argument('--save-dir', dest='save_dir',
 parser.add_argument('--save-every', dest='save_every',
                     help='Saves checkpoints at every specified number of epochs',
                     type=int, default=10)
+parser.add_argument('-l', '--logs', dest='logs', action='store_true',
+                    help='Save logs')
+parser.add_argument('--logs-dir', dest='logs_dir',
+                    help='The directory used to save the logs',
+                    default='logs_dir', type=str)
 
 
 def main():
@@ -77,6 +84,14 @@ def main():
         model.cpu()
     else:
         model.cuda()
+
+    if args.logs:
+        if args.logs_dir == 'logs_dir':
+            writer = SummaryWriter(f'log_dir/{args.arch}')
+        else:
+            writer = SummaryWriter(args.logs_dir)
+    else:
+        writer = None
 
     # optionally resume from a checkpoint
     if args.resume:
@@ -123,7 +138,7 @@ def main():
 
         # train for one epoch
         train(trn_loader, model, criterion, optimizer, epoch, args.cpu,
-              args.half, args.print_freq)
+              args.half, args.print_freq, writer)
 
         # evaluate on validation set
         prec1 = validate(val_loader, model, criterion, args.cpu, args.half,
