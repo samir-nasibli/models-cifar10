@@ -1,23 +1,9 @@
 # ResNet and VGG implementation for CIFAR10/CIFAR100 in Pytorch
 The purpose of this repo is to provide a valid pytorch implementation of ResNet-s and VGG-s for CIFAR10 and do comparative analysis.
 
-The following models are provided (with validation results):
-| Name      | # layers | # params| Test err(this impl.) | Test err(papers)|
-|-----------|---------:|--------:|:-----------------:|:---------------------:|
-|[ResNet20]()   |    20    | 0.27M   |TODO| -|
-|[ResNet32]()  |    32    | 0.46M   | TODO| -|
-|[ResNet44]()   |    44    | 0.66M   | TODO| -|
-|[ResNet56]()   |    56    | 0.85M   | TODO| -|
-|[ResNet110]()  |   110    |  1.7M   | TODO| -|
-|[ResNet1202]() |  1202    | 19.4M   | TODO| -|
-|[VGG11]()   |    -    | -   |TODO| -|
-|[VGG11_bn]()  |    -    | -   | TODO| -|
-|[VGG13]()   |    -    | -   | TODO| -|
-|[VGG13_bn]()   |    -    | -   | TODO| -|
-|[VGG16]()  |   -    |  -   | TODO| -|
-|[VGG16_bn]() |  -    | -   | TODO| -|
-|[VGG19]()  |   -    |  -   | TODO| -|
-|[VGG169_bn]() |  -    | -   | TODO| -|
+The experiment results for the provided models can be found [here](results):
+`ResNet20`, `ResNet32`, `ResNet44`, `ResNet56`, `ResNet110`, `ResNet120`, `VGG11`, `VGG11_bn`, `VGG13`, `VGG13_bn`, `VGG16`, `VGG16_bn`, `VGG19`, `VGG19_bn` 
+
 ## Prerequisites
 * Python3.5+
 * CUDA 10.1
