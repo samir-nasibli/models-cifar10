@@ -11,7 +11,7 @@ The provided table show comparative analysys of ResNet20 on Cifar10 between this
 
 | Name      | # layers | # params| Test err(this impl.) | Test err(papers)|
 |-----------|---------:|--------:|:-----------------:|:---------------------:|
-|[ResNet20]()   |    20    | 0.27M   |8.91%| 8.27%|
+|[ResNet20](https://drive.google.com/file/d/11ASser28ZsYDNJPQzTHqEm5IL-mAaoJh/view?usp=sharing)   |    20    | 0.27M   |8.91%| 8.27%|
 |[VGG11]()   |    -    | -   |TODO| -|
 |[VGG16]()  |   -    |  -   | TODO| -|
 
