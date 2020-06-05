@@ -1,6 +1,5 @@
 # ResNet and VGG implementation for CIFAR10/CIFAR100 in Pytorch
 The purpose of this repo is to provide a valid pytorch implementation of ResNet-s and VGG-s for CIFAR10 and do comparative analysis.
-<<<<<<< HEAD
 
 The following models are provided (with validation results):
 | Name      | # layers | # params| Test err(this impl.) | Test err(papers)|
@@ -54,7 +53,8 @@ python main.py -h
 usage: main.py [-h] [--arch ARCH] [-j N] [--epochs N] [--start-epoch N] [-b N]
                [--lr LR] [--momentum M] [--weight-decay W] [--print-freq N]
                [--resume PATH] [-e] [--pretrained] [--half] [--cpu]
-               [--save-dir SAVE_DIR]
+               [--save-dir SAVE_DIR] [--save-every SAVE_EVERY] [-l]
+               [--logs-dir LOGS_DIR]
 
 PyTorch ImageNet Training
 
@@ -82,6 +82,8 @@ optional arguments:
   --save-dir SAVE_DIR   The directory used to save the trained models
   --save-every SAVE_EVERY
                         Saves checkpoints at every specified number of epochs
+  -l, --logs            Save logs
+  --logs-dir LOGS_DIR   The directory used to save the logs
 ```
 
 Example of running:
@@ -91,4 +93,10 @@ python main.py  --arch=resnet20 --epochs=100  --save-dir=save_resnet20
 For evaluation:
 ```bash
 python main.py --evaluate --arch=resnet20  --save-dir=save_resnet20
+```
+
+Example for running with saving logs and vizualization on TensorBoard:
+```bash
+python main.py  --arch=resnet20 --epochs=100  --save-dir=save_resnet20 -l --logs-dir=<your_logs_dir>
+tensorboard --logdir=<your_logs_dir>
 ```
