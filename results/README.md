@@ -15,6 +15,11 @@ The provided table show comparative analysys of between ResNet and VGG models on
 |[VGG11](https://drive.google.com/file/d/11niPBS9H8gmvF5JmR4l_ZGrPXz9Nr7s3/view?usp=sharing)   |    11    | 133M   |86.81%|
 |[VGG16 (135 epc)](https://drive.google.com/file/d/1-iJdp3lIlgbWmoHAu-JcUgIlHVjUx4dU/view?usp=sharing)  |   16   |  138   | 91.86%|
 
+
+Training process was monitored by using TensorBoard tools
+
+![Alt text](vgg16_tensorboard_training.png?raw=false "Training vgg16 - TensorBoard vizualization")
+
 ## TODO
 * Update Table
 * Link to disk
