@@ -26,53 +26,53 @@ model_names = sorted(name for name in models_dict
                      and callable(models_dict[name]))
 
 
-parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
-parser.add_argument('--arch', '-a', metavar='ARCH', default='vgg19',
-                    choices=model_names,
-                    help='model architecture: ' + ' | '.join(model_names) +
-                    ' (default: vgg19)')
-parser.add_argument('-j', '--workers', default=4, type=int, metavar='N',
-                    help='number of data loading workers (default: 4)')
-parser.add_argument('--epochs', default=300, type=int, metavar='N',
-                    help='number of total epochs to run')
-parser.add_argument('--start-epoch', default=0, type=int, metavar='N',
-                    help='manual epoch number (useful on restarts)')
-parser.add_argument('-b', '--batch-size', default=128, type=int,
-                    metavar='N', help='mini-batch size (default: 128)')
-parser.add_argument('--lr', '--learning-rate', default=0.05, type=float,
-                    metavar='LR', help='initial learning rate')
-parser.add_argument('--momentum', default=0.9, type=float, metavar='M',
-                    help='momentum')
-parser.add_argument('--weight-decay', '--wd', default=5e-4, type=float,
-                    metavar='W', help='weight decay (default: 5e-4)')
-parser.add_argument('--print-freq', '-p', default=20, type=int,
-                    metavar='N', help='print frequency (default: 20)')
-parser.add_argument('--resume', default='', type=str, metavar='PATH',
-                    help='path to latest checkpoint (default: none)')
-parser.add_argument('-e', '--evaluate', dest='evaluate', action='store_true',
-                    help='evaluate model on validation set')
-parser.add_argument('--pretrained', dest='pretrained', action='store_true',
-                    help='use pre-trained model')
-parser.add_argument('--half', dest='half', action='store_true',
-                    help='use half-precision(16-bit) ')
-parser.add_argument('--cpu', dest='cpu', action='store_true',
-                    help='use cpu')
-parser.add_argument('--save-dir', dest='save_dir',
-                    help='The directory used to save the trained models',
-                    default='save_temp', type=str)
-parser.add_argument('--save-every', dest='save_every',
-                    help='Saves checkpoints at every specified number of epochs',
-                    type=int, default=10)
-parser.add_argument('-l', '--logs', dest='logs', action='store_true',
-                    help='Save logs')
-parser.add_argument('--logs-dir', dest='logs_dir',
-                    help='The directory used to save the logs',
-                    default='logs_dir', type=str)
-
-
-def main():
-    global args
+def parse_args(model_names):
+    parser = argparse.ArgumentParser(description='PyTorch ImageNet Training')
+    parser.add_argument('--arch', '-a', metavar='ARCH', default='vgg19',
+                        choices=model_names,
+                        help='model architecture: ' + ' | '.join(model_names) +
+                        ' (default: vgg19)')
+    parser.add_argument('-j', '--workers', default=4, type=int, metavar='N',
+                        help='number of data loading workers (default: 4)')
+    parser.add_argument('--epochs', default=300, type=int, metavar='N',
+                        help='number of total epochs to run')
+    parser.add_argument('--start-epoch', default=0, type=int, metavar='N',
+                        help='manual epoch number (useful on restarts)')
+    parser.add_argument('-b', '--batch-size', default=128, type=int,
+                        metavar='N', help='mini-batch size (default: 128)')
+    parser.add_argument('--lr', '--learning-rate', default=0.05, type=float,
+                        metavar='LR', help='initial learning rate')
+    parser.add_argument('--momentum', default=0.9, type=float, metavar='M',
+                        help='momentum')
+    parser.add_argument('--weight-decay', '--wd', default=5e-4, type=float,
+                        metavar='W', help='weight decay (default: 5e-4)')
+    parser.add_argument('--print-freq', '-p', default=20, type=int,
+                        metavar='N', help='print frequency (default: 20)')
+    parser.add_argument('--resume', default='', type=str, metavar='PATH',
+                        help='path to latest checkpoint (default: none)')
+    parser.add_argument('-e', '--evaluate', dest='evaluate', action='store_true',
+                        help='evaluate model on validation set')
+    parser.add_argument('--pretrained', dest='pretrained', action='store_true',
+                        help='use pre-trained model')
+    parser.add_argument('--half', dest='half', action='store_true',
+                        help='use half-precision(16-bit) ')
+    parser.add_argument('--cpu', dest='cpu', action='store_true',
+                        help='use cpu')
+    parser.add_argument('--save-dir', dest='save_dir',
+                        help='The directory used to save the trained models',
+                        default='save_temp', type=str)
+    parser.add_argument('--save-every', dest='save_every',
+                        help='Saves checkpoints at every specified number of epochs',
+                        type=int, default=10)
+    parser.add_argument('-l', '--logs', dest='logs', action='store_true',
+                        help='Save logs')
+    parser.add_argument('--logs-dir', dest='logs_dir',
+                        help='The directory used to save the logs',
+                        default='logs_dir', type=str)
     args = parser.parse_args()
+    return args
+
+def main(args):
     best_prec1 = 0
 
     # Check the save_dir exists or not
@@ -162,4 +162,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    args = parse_args(model_names)
+    main(args)
