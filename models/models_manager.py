@@ -22,3 +22,5 @@ class Models():
     def get_model(self, name):
         if name in self.model_names:
             return self.models_dict[name]()
+        else:
+            raise ValueError("Provided model arch is not supported")
