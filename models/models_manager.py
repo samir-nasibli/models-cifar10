@@ -21,4 +21,4 @@ class Models():
     
     def get_model(self, name):
         if name in self.model_names:
-            return self.models_dict[name]
+            return self.models_dict[name]()

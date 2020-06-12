@@ -15,15 +15,7 @@ from torch.utils.tensorboard import SummaryWriter
 
 from data import train_loader, validate_loader
 from train_val import validate, train, adjust_learning_rate
-from models import vgg, resnet
-from utils.common_utils import merge_two_dicts, save_checkpoint
-
-
-models_dict = merge_two_dicts(vgg.__dict__, resnet.__dict__)
-model_names = sorted(name for name in models_dict
-    if name.islower() and not name.startswith("__")
-                     and (name.startswith("vgg") or name.startswith("resnet"))
-                     and callable(models_dict[name]))
+from models import models_manager
 
 
 def parse_args(model_names):
@@ -72,14 +64,14 @@ def parse_args(model_names):
     args = parser.parse_args()
     return args
 
-def main(args):
+
+def main(args, models_mngr):
     best_prec1 = 0
 
     # Check the save_dir exists or not
     if not os.path.exists(args.save_dir):
         os.makedirs(args.save_dir)
-
-    model = torch.nn.DataParallel(models_dict[args.arch]())
+    model = torch.nn.DataParallel(models_mngr.get_model(args.arch))
     if args.cpu:
         model.cpu()
     else:
@@ -162,5 +154,6 @@ def main(args):
 
 
 if __name__ == '__main__':
-    args = parse_args(model_names)
-    main(args)
+    models_mngr = models_manager.Models()
+    args = parse_args(models_mngr.get_names())
+    main(args, models_mngr)
