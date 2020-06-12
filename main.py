@@ -16,6 +16,7 @@ from torch.utils.tensorboard import SummaryWriter
 from data import train_loader, validate_loader
 from train_val import validate, train, adjust_learning_rate
 from models import models_manager
+from utils.common_utils import save_checkpoint
 
 
 def parse_args(model_names):
