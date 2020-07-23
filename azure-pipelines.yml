@@ -5,15 +5,25 @@
 
 trigger:
 - master
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+jobs:
+- job: 'models_cifar10'
+  pool:
+    vmImage: 'Ubuntu-16.04'
+  strategy:
+    matrix:
+      Python36:
+        python.version: '3.6'
+      Python37:
+        python.version: '3.7'
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '$(python.version)'
+  - script: |
+      python -m pip install --upgrade pip
+      pip install -U -r requirements/default.txt
+      pip install -U -r requirements/test.txt
+    displayName: 'Install dependencies'
+  - script: |
+      pytest -vv tests/
+    displayName: 'Run tests'
